@@ -1,8 +1,10 @@
 const net = require('net');
+
+const { IP, PORT,playerName} = require('./constants');
 const connect = function () {
   const conn = net.createConnection({
-    host: "localhost",
-    port: 50541
+    host: IP,
+    port: PORT
   });
 
   // interpret incoming data as text
@@ -10,7 +12,7 @@ const connect = function () {
 
   conn.on("connect", () => {//when connection is established
     console.log("Successfully connected!!")
-    conn.write("Name: FSS")//writing  my initials to the object in the server
+    conn.write(`Name: ${playerName}`)//writing  my initials to the object in the server
     //conn.write("Move: up")
     //conn.write("Move: down")
   })

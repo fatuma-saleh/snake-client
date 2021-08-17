@@ -1,55 +1,29 @@
 let connection;
+const { moves, playerName } = require('./constants');
 const setupInput = function (conn) {
   connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding('utf8');
   stdin.resume();
-
   stdin.on('data', (key) => {
-    switch (key) {
-      case 'w':
-        connection.write("Move: up")
-        break;
-      case 'a':
-        connection.write("Move: left");
-        break;
-      case 's':
-        connection.write("Move: down");
-        break;
-      case 'd':
-        connection.write("Move: right");
-        conn.write("right")
-        break;
-      case 'q':
-        connection.write("Say: quitter");
-        break;
-
-        case 'o':
-        connection.write("Say: Winner");
-        break;
-
-        case 'm':
-        connection.write("Say: u missed");
-        break;
-
-        case 'l':
-        connection.write("Say: loser");
-        break;
-      default:
-        console.log("wrong key")
-        break;
+    if (moves[key]) {
+      connection.write(moves[key])
+    } else {
+      console.log("Wrong key")
     }
+
   });
 
-  handleUserInput();
+  handleUserInput(conn);
   return stdin;
 }
 
-const handleUserInput = function () {
+const handleUserInput = function (conn) {
   const stdin = process.stdin;
   stdin.on('data', (key) => {
     if (key === '\u0003') {
+      conn.write(`Exit ${playerName}`)
       process.exit();
     }
   })
