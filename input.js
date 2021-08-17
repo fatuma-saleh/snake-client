@@ -19,13 +19,27 @@ const setupInput = function (conn) {
         break;
       case 'd':
         connection.write("Move: right");
+        conn.write("right")
+        break;
+      case 'q':
+        connection.write("Say: quitter");
         break;
 
+        case 'o':
+        connection.write("Say: Winner");
+        break;
+
+        case 'm':
+        connection.write("Say: u missed");
+        break;
+
+        case 'l':
+        connection.write("Say: loser");
+        break;
       default:
         console.log("wrong key")
         break;
     }
-
   });
 
   handleUserInput();
