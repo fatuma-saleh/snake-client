@@ -9,7 +9,8 @@ const setupInput = function (conn) {
   stdin.on('data', (key) => {
     if (moves[key]) {
       connection.write(moves[key])
-    } else {
+    }
+    else {
       console.log("Wrong key")
     }
 
@@ -19,11 +20,12 @@ const setupInput = function (conn) {
   return stdin;
 }
 
+
 const handleUserInput = function (conn) {
   const stdin = process.stdin;
   stdin.on('data', (key) => {
     if (key === '\u0003') {
-      conn.write(`Exit ${playerName}`)
+      //conn.write(`Exit ${playerName}`)
       process.exit();
     }
   })
