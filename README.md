@@ -8,10 +8,10 @@ Before you can run this client, you will need to be running the server side whic
 
 ## Steps to run the server
 
-git clone https://github.com/lighthouse-labs/snek-multiplayer.git
-cd snek-multiplayer
-npm install
-npm run play
+- clone  https://github.com/lighthouse-labs/snek-multiplayer.git
+- cd snek-multiplayer
+- npm install
+- npm run play
 
 
 ## Getting Started
